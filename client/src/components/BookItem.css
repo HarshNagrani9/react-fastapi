@@ -1,0 +1,206 @@
+/* ============================================
+   BOOK ITEM COMPONENT STYLES
+   ============================================ */
+
+.book-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+  animation: fadeIn var(--transition-slow) ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.book-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-hover);
+}
+
+.book-item:hover::before {
+  width: 4px;
+}
+
+/* Status-based border colors */
+.book-item[data-status="want_to_read"]::before {
+  background: var(--status-want-to-read);
+}
+
+.book-item[data-status="reading"]::before {
+  background: var(--status-reading);
+}
+
+.book-item[data-status="completed"]::before {
+  background: var(--status-completed);
+}
+
+.book-item-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.book-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.book-item-content {
+  flex: 1;
+}
+
+.book-item-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.3;
+}
+
+.book-item-author {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+  font-style: italic;
+}
+
+.book-item-author::before {
+  content: "by ";
+  font-style: normal;
+}
+
+.book-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.book-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.025em;
+}
+
+.book-status-badge.want-to-read {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--status-want-to-read);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.book-status-badge.reading {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--status-reading);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.book-status-badge.completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--status-completed);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.book-genre {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.book-genre::before {
+  content: "📚 ";
+  margin-right: var(--spacing-xs);
+}
+
+.book-notes {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.book-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.book-item-actions button {
+  min-width: 80px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 0.875rem;
+}
+
+/* Edit Mode */
+.book-item-edit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.book-item-edit form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.book-item-edit .form-group {
+  margin-bottom: 0;
+}
+
+.book-item-edit-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.book-item-edit-actions button {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .book-item-header {
+    flex-direction: column;
+  }
+  
+  .book-item-actions {
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .book-item-actions button {
+    flex: 1;
+  }
+}
+
